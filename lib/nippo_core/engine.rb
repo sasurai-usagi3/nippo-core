@@ -1,4 +1,5 @@
 require 'slim-rails'
+require 'devise'
 
 module NippoCore
   class Engine < ::Rails::Engine
