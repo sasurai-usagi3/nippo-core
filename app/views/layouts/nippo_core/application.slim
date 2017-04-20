@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title
+      | Nippo core
+    = stylesheet_link_tag    "nippo_core/application", media: "all"
+    = javascript_include_tag "nippo_core/application"
+    = csrf_meta_tags
+  body
+    = yield
