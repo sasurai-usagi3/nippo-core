@@ -5,7 +5,7 @@ module NippoCore
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :created_groups, class_name: 'NippoCore::Group', foreign_key: 'creator_id'
+    has_many :created_groups, class_name: 'NippoCore::Group', foreign_key: 'creator_id', dependent: :destroy
     has_many :reports, dependent: :destroy
 
     validates :last_name, presence: true
