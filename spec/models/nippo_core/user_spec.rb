@@ -4,6 +4,7 @@ module NippoCore
   RSpec.describe User, type: :model do
     describe 'Association' do
       it { should have_many(:created_groups).class_name('NippoCore::Group').with_foreign_key('creator_id') }
+      it { should have_many(:reports).dependent(:destroy) }
     end
 
     describe 'Validation' do

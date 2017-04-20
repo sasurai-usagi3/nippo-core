@@ -6,6 +6,7 @@ module NippoCore
            :recoverable, :rememberable, :trackable, :validatable
 
     has_many :created_groups, class_name: 'NippoCore::Group', foreign_key: 'creator_id'
+    has_many :reports, dependent: :destroy
 
     validates :last_name, presence: true
     validates :first_name, presence: true
