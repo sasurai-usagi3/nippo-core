@@ -1,0 +1,4 @@
+ul
+  - @reports.each do |report|
+    li
+      = link_to report.title, group_report_path(report, group_id: @group.id)

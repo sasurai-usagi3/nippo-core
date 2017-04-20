@@ -1,0 +1,8 @@
+h2
+  = Date.today
+  | &nbsp;
+  = current_user.nickname
+= form_for [@group, @report] do |f|
+  = f.label :body
+  = f.text_area :body
+  = f.submit
