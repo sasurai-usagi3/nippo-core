@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420094814) do
+ActiveRecord::Schema.define(version: 20170420102455) do
+
+  create_table "nippo_core_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description", limit: 65535
+    t.integer  "creator_id",                null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["creator_id"], name: "index_nippo_core_groups_on_creator_id", using: :btree
+  end
 
   create_table "nippo_core_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -36,4 +45,5 @@ ActiveRecord::Schema.define(version: 20170420094814) do
     t.index ["reset_password_token"], name: "index_nippo_core_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "nippo_core_groups", "nippo_core_users", column: "creator_id"
 end
