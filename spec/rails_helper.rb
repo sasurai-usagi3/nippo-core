@@ -22,15 +22,13 @@ require 'shoulda/matchers'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/factories/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -59,14 +57,11 @@ end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    # 今回はRspecを使うのでこのように設定
     with.test_framework :rspec
 
-    # shoulda-matchersを使いたいテストライブラリを指定
     with.library :active_record
     with.library :active_model
     with.library :action_controller
-    # Or, choose the following (which implies all of the above):
     with.library :rails
   end
 end
