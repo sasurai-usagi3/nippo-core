@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise'
   s.add_dependency 'active_decorator'
   s.add_dependency 'redcarpet'
+  s.add_dependency 'pundit'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'factory_girl_rails'

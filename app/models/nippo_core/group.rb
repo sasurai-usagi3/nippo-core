@@ -13,5 +13,9 @@ module NippoCore
       relation.status = true
       relation.save
     end
+
+    def member?(user)
+      group_member_relations.exists?(user_id: user.id, status: true)
+    end
   end
 end

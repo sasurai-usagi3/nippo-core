@@ -8,6 +8,7 @@ module NippoCore
 
     def create
       if @group.save
+        @group.add_member(current_user)
         redirect_to root_path
       else
         render 'new', status: 400
