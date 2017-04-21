@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420110055) do
+ActiveRecord::Schema.define(version: 20170420155712) do
+
+  create_table "nippo_core_group_member_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "member_id",                      null: false
+    t.integer  "group_id",                       null: false
+    t.integer  "authentication", default: 0,     null: false
+    t.boolean  "status",         default: false, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["group_id"], name: "index_nippo_core_group_member_relations_on_group_id", using: :btree
+    t.index ["member_id"], name: "index_nippo_core_group_member_relations_on_member_id", using: :btree
+  end
 
   create_table "nippo_core_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                      null: false
@@ -56,6 +67,8 @@ ActiveRecord::Schema.define(version: 20170420110055) do
     t.index ["reset_password_token"], name: "index_nippo_core_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "nippo_core_group_member_relations", "nippo_core_groups", column: "group_id"
+  add_foreign_key "nippo_core_group_member_relations", "nippo_core_users", column: "member_id"
   add_foreign_key "nippo_core_groups", "nippo_core_users", column: "creator_id"
   add_foreign_key "nippo_core_reports", "nippo_core_groups", column: "group_id"
   add_foreign_key "nippo_core_reports", "nippo_core_users", column: "user_id"
