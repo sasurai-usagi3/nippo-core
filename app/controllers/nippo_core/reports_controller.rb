@@ -23,10 +23,6 @@ module NippoCore
     end
 
   private
-    def find_group
-      @group = NippoCore::Group.find(params[:group_id])
-    end
-
     def initialize_report
       # TODO: selectable reported_at
       @report = @group.reports.find_by(id: params[:id]) || @group.reports.new(report_params.merge(reported_at: Date.today, user: current_user))
