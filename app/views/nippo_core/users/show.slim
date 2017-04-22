@@ -1,0 +1,32 @@
+h1
+  | Your Profile
+section
+  h2
+    | Names
+  dl
+    dt
+      | Name
+    dd
+      =  ActiveDecorator::Decorator.instance.decorate(current_user).name
+    dt
+      | Nickame
+    dd
+      = current_user.nickname
+section
+  h2
+    | Groups you created
+  ul
+    - @created_groups.each do |group|
+      li
+        = link_to group.name, group
+  = link_to 'more', '#'
+  = link_to 'create more', new_group_path
+section
+  h2
+    | Groups you join
+  ul
+    - @joined_groups.each do |group|
+      li
+        = link_to group.name, group
+  = link_to 'more', '#'
+  = link_to 'join more', '#'

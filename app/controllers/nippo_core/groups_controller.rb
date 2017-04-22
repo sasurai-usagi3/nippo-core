@@ -2,7 +2,16 @@ module NippoCore
   class GroupsController < ApplicationController
     before_action :initialize_group, only: [:new, :create]
 
+    def index
+      @groups = NippoCore::Group.order(created_at: :desc).page(params[:page]).per(10)
+    end
+
     def new
+    end
+
+    def show
+      @group = NippoCore::Group.find(params[:id])
+      @reports = @group.reports.order(reported_at: :desc).limit(5)
     end
 
     def create

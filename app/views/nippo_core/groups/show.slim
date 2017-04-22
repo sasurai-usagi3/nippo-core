@@ -1,0 +1,20 @@
+h1
+  = @group.name
+section
+  h2
+    | something
+  = simple_format @group.description
+section
+  - if @group.member?(current_user)
+    h2
+      | recently activity
+    ul
+      - @reports.each do |report|
+        li
+          = link_to report.title, [@group, report]
+    = link_to 'more', group_reports_path(group_id: @group.id)
+    = link_to 'new report', new_group_report_path(group_id: @group.id)
+  - else
+    h2
+      | Join us?
+    | please click here!

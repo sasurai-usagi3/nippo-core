@@ -2,9 +2,25 @@ doctype html
 html
   head
     title
-      | Nippo core
+      | 日報
     = stylesheet_link_tag    "nippo_core/application", media: "all"
     = javascript_include_tag "nippo_core/application"
     = csrf_meta_tags
   body
+    header.header
+      div
+        = t('daily report')
+      nav
+        - if user_signed_in?
+          div
+            = current_user.nickname
+        ul
+          - if user_signed_in?
+            li
+              = link_to t('sign out'), destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to t('sign in'), new_user_session_path
+            li
+              = link_to t('sign up'), new_user_registration_path
     = yield

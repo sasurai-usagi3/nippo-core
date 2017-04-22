@@ -7,7 +7,7 @@ module NippoCore
     # TODO: Implement test
     def index
       redirect_to home_path unless @group.member?(current_user)
-      @reports = @group.reports
+      @reports = @group.reports.order(reported_at: :desc).page(params[:page]).per(10)
     end
 
     def show
