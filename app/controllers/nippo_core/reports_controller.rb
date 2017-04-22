@@ -1,20 +1,26 @@
 module NippoCore
   class ReportsController < ApplicationController
+    include Pundit
     before_action :authenticate_user!
     before_action :find_group
     before_action :initialize_report, except: :index
 
+    # TODO: Implement test
     def index
+      redirect_to home_path unless @group.member?(current_user)
       @reports = @group.reports
     end
 
     def show
+      authorize @report
     end
 
     def new
+      authorize @report
     end
 
     def create
+      authorize @report
       if @report.save
         redirect_to group_reports_path(group_id: @group.id)
       else
