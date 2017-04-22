@@ -1,13 +1,13 @@
 # NippoCore
-日報システム **(製作中)**
+This is a daily report system gem for Rails application.  
+Mount this system to yours, you can use daily report sharing system.
 
 ## Usage
-メインのシステムにマウントしてください
 
 ## Installation
 Add this line to your application's Gemfile:
 
-```ruby
+```ruby:Gemfile
 gem 'nippo_core'
 ```
 
@@ -19,6 +19,12 @@ $ bundle
 Or install it yourself as:
 ```bash
 $ gem install nippo_core
+```
+
+Then, mount to main system. In `config/routes.rb`
+```ruby:config/routes.rb
+  # change path where you want to mount
+  mount NippoCore::Engine => '/mount_point'
 ```
 
 ## Contributing
