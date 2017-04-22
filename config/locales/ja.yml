@@ -1,0 +1,17 @@
+ja:
+  daily report: 日報
+  sign up: サインアップ
+  sign in: サインイン
+  sign out: サインアウト
+  activerecord:
+    attributes:
+      nippo_core/user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワードの再確認
+        last_name: 苗字
+        first_name: 名前
+        nickname: ニックネーム
+      nippo_core/group:
+        name: グループ名
+        description: 説明

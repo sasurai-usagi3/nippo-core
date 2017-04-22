@@ -1,2 +1,13 @@
-h1
-  | Hello World
+- if user_signed_in?
+  h1
+    | Welcome to Nippo!
+  p
+    | What do you want to do?
+  ul
+    li
+      = link_to 'Create new group.', new_group_path
+    li
+      = link_to 'Show your profile.', users_path
+- else
+  | If you want to write and share report, please
+  = link_to ' sign in!', new_user_session_path
