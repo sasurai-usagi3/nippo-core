@@ -18,12 +18,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 5.0.2'
 
-  s.add_dependency 'mysql2'
   s.add_dependency 'slim-rails'
   s.add_dependency 'devise'
   s.add_dependency 'active_decorator'
   s.add_dependency 'redcarpet'
   s.add_dependency 'pundit'
+  s.add_development_dependency 'mysql2'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'factory_girl_rails'

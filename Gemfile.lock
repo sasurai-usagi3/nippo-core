@@ -4,7 +4,6 @@ PATH
     nippo_core (0.1.0)
       active_decorator
       devise
-      mysql2
       pundit
       rails (~> 5.0.2)
       redcarpet
@@ -168,6 +167,7 @@ PLATFORMS
 
 DEPENDENCIES
   factory_girl_rails
+  mysql2
   nippo_core!
   rspec-rails
   shoulda-matchers
