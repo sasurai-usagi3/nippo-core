@@ -1,6 +1,5 @@
 module NippoCore
   class GroupsController < ApplicationController
-    before_action :authenticate_user!
     before_action :initialize_group, only: [:new, :create]
 
     def new

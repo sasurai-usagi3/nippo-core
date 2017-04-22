@@ -1,7 +1,6 @@
 module NippoCore
   class ReportsController < ApplicationController
     include Pundit
-    before_action :authenticate_user!
     before_action :find_group
     before_action :initialize_report, except: :index
 
