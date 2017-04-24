@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nippo_core (0.2.0)
+    nippo_core (0.3.0)
       active_decorator
       devise
       kaminari
