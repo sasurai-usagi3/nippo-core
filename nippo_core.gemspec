@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['sasurai.usagi3@gmail.com']
   s.homepage    = 'https://github.com/sasurai-usagi3/nippo-core'
   s.summary     = 'This is a daily report system for Rails application.'
-  s.description = 'When you install this gem, you can report and share a daily report among your company group, club, teammate etc.'
+  s.description = 'This is a web application you can share and stock a daily report. You can report and share a daily report among your company group, club, teammate etc.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
