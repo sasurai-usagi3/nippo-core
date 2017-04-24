@@ -13,5 +13,29 @@ module NippoCore
     validates :last_name, presence: true
     validates :first_name, presence: true
     validates :nickname, presence: true
+
+    def send_request(group)
+      relation = group_member_relations.find_or_initialize_by(group: group)
+      relation.save
+    end
+
+    # TODO: had better check!
+    def add_member(user, group)
+      relation = group.group_member_relations.find_or_initialize_by(user: user, accepted_at: nil)
+      relation.accepted_at = Time.now
+      relation.accepter = self
+      relation.save
+    end
+
+    def accept_request(request)
+      return unless request.group.member?(self)
+      request.accepted_at = Time.now
+      request.accepter = self
+      request.save
+    end
+
+    def request_to?(group)
+      group_member_relations.exists?(group_id: group.id)
+    end
   end
 end

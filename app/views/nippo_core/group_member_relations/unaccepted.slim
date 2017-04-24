@@ -1,0 +1,6 @@
+ul
+  - @requests.each do |request|
+    li id="request_#{request.id}"
+      = request.user.nickname
+      |  
+      = link_to 'accept', group_member_relation_accept_path(group_member_relation_id: request.id), method: :post, remote: true
