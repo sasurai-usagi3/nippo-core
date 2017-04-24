@@ -20,8 +20,9 @@ section
         - @reports.each do |report|
           li
             = link_to report.title, [@group, report]
-      = link_to 'more', group_reports_path(group_id: @group.id)
-      = link_to 'new report', new_group_report_path(group_id: @group.id)
+      .btn-group
+      = link_to 'more', group_reports_path(group_id: @group.id), class: 'btn btn-link'
+      = link_to 'new report', new_group_report_path(group_id: @group.id), class: 'btn btn-link'
     section
       h2
         | requests
@@ -31,8 +32,8 @@ section
             = request.user.nickname
             |  
             = link_to 'accept', group_member_relation_accept_path(group_member_relation_id: request.id), method: :post, remote: true, id: "link-to-accept-request_#{request.id}"
-      = link_to 'more', unaccepted_group_group_member_relations_path(group_id: @group.id)
-      = link_to 'invite_member', new_group_group_member_relation_path(group_id: @group.id)
+      = link_to 'more', unaccepted_group_group_member_relations_path(group_id: @group.id), class: 'btn btn-link'
+      = link_to 'invite_member', new_group_group_member_relation_path(group_id: @group.id), class: 'btn btn-link'
   - else
     h2
       | Join us?

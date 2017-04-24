@@ -1,4 +1,5 @@
 class NippoCore::Users::SessionsController < Devise::SessionsController
+  layout 'nippo_core/application'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

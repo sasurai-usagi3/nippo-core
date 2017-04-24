@@ -1,4 +1,5 @@
 = form_for [@group, @group_member_relations] do |f|
-  .field
-    = f.collection_select :user_id, NippoCore::User.all, :id, :nickname
-  = f.submit
+  .form-group
+    = f.collection_select :user_id, NippoCore::User.all, :id, :nickname, {}, class: 'form-control'
+  button.btn.btn-default
+    | Invite
