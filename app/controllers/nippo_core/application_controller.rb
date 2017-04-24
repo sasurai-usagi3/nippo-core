@@ -5,7 +5,7 @@ module NippoCore
 
   private
     def find_group
-      @group = NippoCore::Group.find(params[:group_id])
+      @group = NippoCore::Group.find(params[:group_id] || params[:id])
     end
   end
 end

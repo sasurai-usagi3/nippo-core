@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 20170420155712) do
 
   create_table "nippo_core_group_member_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                        null: false
-    t.integer  "group_id",                       null: false
-    t.integer  "authentication", default: 0,     null: false
-    t.boolean  "status",         default: false, null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "group_id",                   null: false
+    t.integer  "authentication", default: 0, null: false
+    t.integer  "accepter_id"
+    t.datetime "accepted_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["accepter_id"], name: "fk_rails_2b25a07830", using: :btree
     t.index ["group_id"], name: "index_nippo_core_group_member_relations_on_group_id", using: :btree
     t.index ["user_id"], name: "index_nippo_core_group_member_relations_on_user_id", using: :btree
   end
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170420155712) do
   end
 
   add_foreign_key "nippo_core_group_member_relations", "nippo_core_groups", column: "group_id"
+  add_foreign_key "nippo_core_group_member_relations", "nippo_core_users", column: "accepter_id"
   add_foreign_key "nippo_core_group_member_relations", "nippo_core_users", column: "user_id"
   add_foreign_key "nippo_core_groups", "nippo_core_users", column: "creator_id"
   add_foreign_key "nippo_core_reports", "nippo_core_groups", column: "group_id"

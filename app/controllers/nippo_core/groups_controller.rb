@@ -1,6 +1,7 @@
 module NippoCore
   class GroupsController < ApplicationController
     before_action :initialize_group, only: [:new, :create]
+    before_action :find_group, only: [:show, :request_join]
 
     def index
       @groups = NippoCore::Group.order(created_at: :desc).page(params[:page]).per(10)
@@ -10,17 +11,23 @@ module NippoCore
     end
 
     def show
-      @group = NippoCore::Group.find(params[:id])
       @reports = @group.reports.order(reported_at: :desc).limit(5)
+      @requests = @group.unaccepted_requests.limit(5)
+      @members = @group.members
     end
 
     def create
       if @group.save
-        @group.add_member(current_user)
+        current_user.add_member(current_user, @group)
         redirect_to root_path
       else
         render 'new', status: 400
       end
+    end
+
+    def request_join
+      result = current_user.send_request(@group)
+      render layout: nil
     end
 
   private

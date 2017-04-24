@@ -4,17 +4,36 @@ section
   h2
     | something
   = simple_format @group.description
+  section
+    h3
+      | Member
+    ul
+      - @members.each do |m|
+        li
+          = m.nickname
 section
   - if @group.member?(current_user)
-    h2
-      | recently activity
-    ul
-      - @reports.each do |report|
-        li
-          = link_to report.title, [@group, report]
-    = link_to 'more', group_reports_path(group_id: @group.id)
-    = link_to 'new report', new_group_report_path(group_id: @group.id)
+    section
+      h2
+        | recently activity
+      ul
+        - @reports.each do |report|
+          li
+            = link_to report.title, [@group, report]
+      = link_to 'more', group_reports_path(group_id: @group.id)
+      = link_to 'new report', new_group_report_path(group_id: @group.id)
+    section
+      h2
+        | requests
+      ul
+        - @requests.each do |request|
+          li id="request_#{request.id}"
+            = request.user.nickname
+            |  
+            = link_to 'accept', group_member_relation_accept_path(group_member_relation_id: request.id), method: :post, remote: true, id: "link-to-accept-request_#{request.id}"
+      = link_to 'more', unaccepted_group_group_member_relations_path(group_id: @group.id)
+      = link_to 'invite_member', new_group_group_member_relation_path(group_id: @group.id)
   - else
     h2
       | Join us?
-    | please click here!
+    = render 'link_to_join', group: @group

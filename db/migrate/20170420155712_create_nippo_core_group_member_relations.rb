@@ -6,7 +6,9 @@ class CreateNippoCoreGroupMemberRelations < ActiveRecord::Migration[5.0]
       t.integer :group_id, null: false, index: true
       t.foreign_key :nippo_core_groups, column: :group_id
       t.integer :authentication, null: false, default: 0
-      t.boolean :status, null: false, default: false
+      t.integer :accepter_id
+      t.foreign_key :nippo_core_users, column: :accepter_id
+      t.datetime :accepted_at
 
       t.timestamps
     end

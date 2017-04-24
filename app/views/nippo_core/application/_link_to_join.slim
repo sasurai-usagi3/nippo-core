@@ -1,0 +1,4 @@
+- if current_user.request_to?(group)
+  = link_to 'Requesting...', '#'
+- else
+  = link_to 'Join us!', group_request_join_path(group), method: :post, remote: true, id: "link-to-join-group_#{group.id}"

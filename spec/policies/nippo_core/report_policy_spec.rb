@@ -9,7 +9,7 @@ RSpec.describe NippoCore::ReportPolicy do
 
   shared_examples 'userがグループの一員' do
     before do
-      NippoCore::GroupMemberRelation.create(user: user, group: group, status: true)
+      NippoCore::GroupMemberRelation.create(user: user, group: group, accepted_at: Time.now)
     end
     it { is_expected.to permit(user, report) }
   end
