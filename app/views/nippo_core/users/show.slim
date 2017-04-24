@@ -15,18 +15,20 @@ section
 section
   h2
     | Groups you created
-  ul
+  ul.list-group
     - @created_groups.each do |group|
-      li
+      li.list-group-item
         = link_to group.name, group
-  = link_to 'more', '#'
-  = link_to 'create more', new_group_path
+  .btn-group
+    = link_to 'more', '#', class: 'btn btn-link'
+    = link_to 'create more', new_group_path, class: 'btn btn-link'
 section
   h2
     | Groups you join
-  ul
+  ul.list-group
     - @joined_groups.each do |group|
-      li
+      li.list-group-item
         = link_to group.name, group
-  = link_to 'more', '#'
-  = link_to 'join more', '#'
+  .btn-group
+    = link_to 'more', '#', class: 'btn btn-link'
+    = link_to 'join more', groups_path, class: 'btn btn-link'

@@ -1,11 +1,12 @@
 h1
   | Group index
-ul
+ul.list-group
   - @groups.each do |group|
-    li
+    li.list-group-item
       = link_to group.name, group
       p
         - if group.member?(current_user)
           | Member
         - else
           = render 'link_to_join', group: group
+= paginate @groups

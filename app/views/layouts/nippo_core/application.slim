@@ -3,24 +3,34 @@ html
   head
     title
       | 日報
-    = stylesheet_link_tag    "nippo_core/application", media: "all"
+    / = stylesheet_link_tag    "nippo_core/application", media: "all"
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
+    css:
+      body { 
+        padding-top: 70px; 
+      }
     = javascript_include_tag "nippo_core/application"
     = csrf_meta_tags
   body
-    header.header
-      div
-        = t('daily report')
-      nav
-        - if user_signed_in?
-          div
-            = current_user.nickname
-        ul
+    header.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          .navbar-brand
+            = t('daily report')
+        nav.nav.navbar-nav.navbar-right
           - if user_signed_in?
-            li
-              = link_to t('sign out'), destroy_user_session_path, method: :delete
-          - else
-            li
-              = link_to t('sign in'), new_user_session_path
-            li
-              = link_to t('sign up'), new_user_registration_path
-    = yield
+            .navbar-text
+              = current_user.nickname
+          ul.nav.navbar-nav
+            - if user_signed_in?
+              li
+                = link_to t('sign out'), destroy_user_session_path, method: :delete
+            - else
+              li
+                = link_to t('sign in'), new_user_session_path
+              li
+                = link_to t('sign up'), new_user_registration_path
+    .container
+      = yield

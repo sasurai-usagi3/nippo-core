@@ -1,4 +1,6 @@
-h2
-  = @report.title
-div
-  == @report.markdowned_body
+.panel.panel-default
+  .panel-heading
+    h2.panel-title
+      = @report.title
+  div.panel-body
+    == @report.markdowned_body

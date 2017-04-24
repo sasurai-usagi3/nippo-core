@@ -1,5 +1,5 @@
-ul
+ul.list-group
   - @reports.each do |report|
-    li
+    li.list-group-item
       = link_to report.title, group_report_path(report, group_id: @group.id)
 = paginate @reports
