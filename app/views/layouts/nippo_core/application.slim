@@ -17,8 +17,7 @@ html
     header.navbar.navbar-default.navbar-fixed-top
       .container
         .navbar-header
-          .navbar-brand
-            = t('daily report')
+          = link_to t('daily report'), root_path, class: 'navbar-brand'
         nav.nav.navbar-nav.navbar-right
           - if user_signed_in?
             .navbar-text
@@ -33,4 +32,5 @@ html
               li
                 = link_to t('sign up'), new_user_registration_path
     .container
+      == breadcrumbs style: :bootstrap
       = yield

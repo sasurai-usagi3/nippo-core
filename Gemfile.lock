@@ -4,6 +4,7 @@ PATH
     nippo_core (0.3.0)
       active_decorator
       devise
+      gretel
       kaminari
       pundit
       rails (~> 5.0.2)
@@ -70,6 +71,8 @@ GEM
       railties (>= 3.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
     i18n (0.8.1)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
