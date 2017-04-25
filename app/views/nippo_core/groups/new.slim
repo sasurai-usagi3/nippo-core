@@ -1,10 +1,2 @@
 - breadcrumb :new_group
-= form_for @group do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, placeholder: 'グループ名 (必須)', class: 'form-control'
-  .form-group
-    = f.label :description
-    = f.text_area :description, placeholder: '説明', class: 'form-control'
-  button.btn.btn-default
-    | Create Group
+= render 'form', group: @group

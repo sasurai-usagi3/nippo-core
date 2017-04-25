@@ -20,8 +20,7 @@ html
           = link_to t('daily report'), root_path, class: 'navbar-brand'
         nav.nav.navbar-nav.navbar-right
           - if user_signed_in?
-            .navbar-text
-              = current_user.nickname
+            = link_to current_user.nickname, users_path, class: 'navbar-text'
           ul.nav.navbar-nav
             - if user_signed_in?
               li
