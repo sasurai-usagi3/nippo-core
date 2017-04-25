@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nippo_core (1.0.0)
+    nippo_core (1.0.1)
       active_decorator
       devise
       gretel

@@ -3,7 +3,7 @@ module NippoCore
     include Pundit
 
     before_action :initialize_group, only: [:new, :create]
-    before_action :find_group, except: [:index, :new]
+    before_action :find_group, except: [:index, :new, :create]
 
     def index
       @groups = NippoCore::Group.order(created_at: :desc).page(params[:page]).per(10)
