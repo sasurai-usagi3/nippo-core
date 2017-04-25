@@ -1,6 +1,7 @@
 # NippoCore
 This is a daily report system gem for Rails application.  
 Mount this system to yours, you can use daily report sharing system.
+You can write with markdown format.
 
 ## Usage
 
