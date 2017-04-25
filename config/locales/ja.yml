@@ -3,6 +3,13 @@ ja:
   sign up: サインアップ
   sign in: サインイン
   sign out: サインアウト
+  views:
+    pagination:
+      truncate: ...
+      next: '>'
+      previous: '<'
+      first: '≪'
+      last: '≫'
   activerecord:
     attributes:
       nippo_core/user:

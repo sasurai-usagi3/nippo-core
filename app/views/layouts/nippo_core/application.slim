@@ -1,8 +1,21 @@
 doctype html
 html
   head
-    title
-      | 日報
+    ruby:
+      metas_hash = {
+        title: 'Nippo',
+        description: 'This is a web application you share and stock daily reports with your teams.',
+        og: {
+          title: 'Nippo',
+          description: 'This is a web application you share and stock daily reports with your teams.'
+        },
+        twitter: {
+          card: 'summary',
+          title: 'Nippo',
+          description: 'This is a web application you share and stock daily reports with your teams.'
+        }
+      }
+    = display_meta_tags metas_hash
     / = stylesheet_link_tag    "nippo_core/application", media: "all"
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"

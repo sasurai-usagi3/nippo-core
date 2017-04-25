@@ -4,10 +4,11 @@ h1
 ul.list-group
   - @groups.each do |group|
     li.list-group-item
-      = link_to group.name, group
-      p
+      div style="display: flex; justify-content: space-between; align-items: center"
+        = link_to group.name, group
         - if group.member?(current_user)
-          | Member
+          .btn.btn-success
+            | Member
         - else
           = render 'link_to_join', group: group
 = paginate @groups

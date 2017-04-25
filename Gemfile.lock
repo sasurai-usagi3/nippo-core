@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    nippo_core (0.3.0)
+    nippo_core (1.0.0)
       active_decorator
       devise
       gretel
       kaminari
+      meta-tags
       pundit
       rails (~> 5.0.2)
       redcarpet
@@ -90,6 +91,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meta-tags (2.4.0)
+      actionpack (>= 3.2.0, <= 5.1.0)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
