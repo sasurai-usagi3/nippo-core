@@ -1,11 +1,9 @@
 - breadcrumb :new_group_report, @group
-h2
-  = Date.today
-  | &nbsp;
-  = current_user.nickname
-= form_for [@group, @report] do |f|
-  .form-group
-    = f.label :body
-    = f.text_area :body, class: 'form-control'
-  button.btn.btn-default
-    | Create Report
+.panel.panel-default
+  .panel-heading
+    h1.panel-title
+      = Date.today
+      | &nbsp;
+      = current_user.nickname
+  .panel-body
+    = render 'form', report: @report

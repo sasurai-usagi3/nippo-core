@@ -27,6 +27,20 @@ module NippoCore
       end
     end
 
+    def edit
+      authorize @report
+      render layout: nil
+    end
+
+    def update
+      authorize @report
+      if @report.update(report_params)
+        redirect_to [@group, @report]
+      else
+        head 400
+      end
+    end
+
   private
     def initialize_report
       # TODO: selectable reported_at

@@ -1,0 +1,6 @@
+= form_for [report.group, report] do |f|
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control'
+  button.btn.btn-default
+    = report.persisted? ? 'Update Report' : 'Create Report'

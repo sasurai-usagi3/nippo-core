@@ -13,6 +13,7 @@ section
       | Nickame
     dd
       = current_user.nickname
+    = link_to 'edit', edit_user_registration_path, class: 'btn btn-default'
 section
   h2
     | Groups you created

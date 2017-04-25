@@ -7,6 +7,11 @@ crumb :user do
   parent :root
 end
 
+crumb :edit_user do
+  link 'edit user profile', edit_user_registration_path
+  parent :user
+end
+
 crumb :new_group do
   link 'new group', new_group_path
   parent :root

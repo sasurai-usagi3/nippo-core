@@ -1,41 +1,48 @@
 - breadcrumb :group, @group
-h1
-  = @group.name
-section
-  h2
-    | something
-  = simple_format @group.description
-  section
-    h3
-      | Member
-    ul
-      - @members.each do |m|
-        li
-          = m.nickname
-section
-  - if @group.member?(current_user)
+#group-area.panel.panel-default
+  .panel-heading
+    div style="display: flex; justify-content: space-between; align-items: center"
+      h1.panel-title
+        | Group name: 
+        = @group.name
+      - if policy(@group).edit?
+        = link_to 'edit', edit_group_path(@group), remote: true, class: 'btn btn-default'
+  .panel-body#group-content-area
     section
       h2
-        | recently activity
-      ul
-        - @reports.each do |report|
-          li
-            = link_to report.title, [@group, report]
-      .btn-group
-      = link_to 'more', group_reports_path(group_id: @group.id), class: 'btn btn-link'
-      = link_to 'new report', new_group_report_path(group_id: @group.id), class: 'btn btn-link'
+        | Introduction
+      = simple_format @group.description
+      section
+        h3
+          | Member
+        ul.list-group
+          - @members.each do |m|
+            li.list-group-item
+              = m.nickname
     section
-      h2
-        | requests
-      ul
-        - @requests.each do |request|
-          li id="request_#{request.id}"
-            = request.user.nickname
-            |  
-            = link_to 'accept', group_member_relation_accept_path(group_member_relation_id: request.id), method: :post, remote: true, id: "link-to-accept-request_#{request.id}"
-      = link_to 'more', unaccepted_group_group_member_relations_path(group_id: @group.id), class: 'btn btn-link'
-      = link_to 'invite_member', new_group_group_member_relation_path(group_id: @group.id), class: 'btn btn-link'
-  - else
-    h2
-      | Join us?
-    = render 'link_to_join', group: @group
+      - if @group.member?(current_user)
+        section
+          h2
+            | recently activity
+          ul.list-group
+            - @reports.each do |report|
+              li.list-group-item
+                = link_to report.title, [@group, report]
+          .btn-group
+          = link_to 'more', group_reports_path(group_id: @group.id), class: 'btn btn-link'
+          = link_to 'new report', new_group_report_path(group_id: @group.id), class: 'btn btn-link'
+        section
+          h2
+            | requests
+          ul.list-group
+            - @requests.each do |request|
+              li.list-group-item id="request_#{request.id}"
+                = request.user.nickname
+                |  
+                = link_to 'accept', group_member_relation_accept_path(group_member_relation_id: request.id), method: :post, remote: true, id: "link-to-accept-request_#{request.id}"
+          = link_to 'more', unaccepted_group_group_member_relations_path(group_id: @group.id), class: 'btn btn-link'
+          = link_to 'invite_member', new_group_group_member_relation_path(group_id: @group.id), class: 'btn btn-link'
+      - else
+        h2
+          | Join us?
+        = render 'link_to_join', group: @group, class: 'btn btn-link'

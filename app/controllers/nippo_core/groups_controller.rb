@@ -1,7 +1,9 @@
 module NippoCore
   class GroupsController < ApplicationController
+    include Pundit
+
     before_action :initialize_group, only: [:new, :create]
-    before_action :find_group, only: [:show, :request_join]
+    before_action :find_group, except: [:index, :new]
 
     def index
       @groups = NippoCore::Group.order(created_at: :desc).page(params[:page]).per(10)
@@ -22,6 +24,20 @@ module NippoCore
         redirect_to root_path
       else
         render 'new', status: 400
+      end
+    end
+
+    def edit
+      authorize @group
+      render layout: nil
+    end
+
+    def update
+      authorize @group
+      if @group.update(group_params)
+        redirect_to @group
+      else
+        head 400
       end
     end
 

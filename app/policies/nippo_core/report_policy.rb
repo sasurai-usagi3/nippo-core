@@ -1,10 +1,11 @@
 module NippoCore
   class ReportPolicy < ApplicationPolicy
-    attr_reader :user, :group
+    attr_reader :user, :group, :report
 
     def initialize(user, report)
       @user = user
-      @group = report.group
+      @report = report
+      @group = @report.group
     end
 
     # TODO: remove
@@ -22,6 +23,14 @@ module NippoCore
 
     def create?
       @group.member?(user)
+    end
+
+    def edit?
+      @report.user_id == @user.id
+    end
+
+    def update?
+      @report.user_id == @user.id
     end
   end
 end
