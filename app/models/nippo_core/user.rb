@@ -7,7 +7,6 @@ module NippoCore
 
     has_many :created_groups, class_name: 'NippoCore::Group', foreign_key: 'creator_id', dependent: :destroy
     has_many :reports, dependent: :destroy
-    has_many :groups, through: :group_member_relations
     has_many :group_member_relations, dependent: :destroy
 
     validates :last_name, presence: true
@@ -36,6 +35,19 @@ module NippoCore
 
     def request_to?(group)
       group_member_relations.exists?(group_id: group.id)
+    end
+
+    # TODO: implement test
+    def joined_groups
+      NippoCore::Group.joins(:group_member_relations)
+                      .where(nippo_core_group_member_relations: {user_id: id})
+                      .where.not(nippo_core_group_member_relations: {accepted_at: nil})
+    end
+
+    # TODO: implement test
+    def requesting_groups
+      NippoCore::Group.joins(:group_member_relations)
+                      .where(nippo_core_group_member_relations: {user_id: id, accepted_at: nil})
     end
   end
 end
