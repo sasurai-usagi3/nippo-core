@@ -1,4 +1,5 @@
 = form_for [report.group, report] do |f|
+  = f.hidden_field :reported_at
   .form-group
     = f.label :body
     = f.text_area :body, class: 'form-control'

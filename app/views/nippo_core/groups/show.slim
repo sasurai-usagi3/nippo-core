@@ -8,6 +8,36 @@
       - if policy(@group).edit?
         = link_to 'edit', edit_group_path(@group), remote: true, class: 'btn btn-default'
   .panel-body#group-content-area
+    - if @group.member?(current_user)
+      section
+        h2
+          | Weekly Index
+        - week_start_day = Date.today.last_week.yesterday
+        table.table
+          thead
+            th
+              | メンバー
+            - 7.times do |d|
+              th
+                = week_start_day + d
+          tbody
+            - @group.members.each do |member|
+              tr
+                td
+                  = member.nickname
+                  - 7.times do |d|
+                    - report = @group.reports.find_by(user: member, reported_at: week_start_day + d)
+                    td
+                      - if current_user == member
+                        - if report.present?
+                          = link_to '○', [@group, report]
+                        - else
+                          = link_to '×', new_group_report_path(group_id: @group.id, report: {reported_at: week_start_day + d})
+                      - else
+                        - if report.present?
+                          = link_to '○', [@group, report]
+                        - else
+                          | ×
     section
       h2
         | Introduction

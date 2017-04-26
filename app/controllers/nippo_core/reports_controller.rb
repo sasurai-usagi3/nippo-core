@@ -43,8 +43,8 @@ module NippoCore
 
   private
     def initialize_report
-      # TODO: selectable reported_at
-      @report = @group.reports.find_by(id: params[:id]) || @group.reports.new(report_params.merge(reported_at: Date.today, user: current_user))
+      # TODO: integrate parmas[:report][:reported_at]
+      @report = @group.reports.find_by(id: params[:id]) || @group.reports.new(report_params.merge(reported_at: params.fetch(:report, {})[:reported_at] || Date.today, user: current_user))
     end
 
     def report_params
