@@ -52,7 +52,7 @@ module NippoCore
     end
 
     def group_params
-      params.fetch(:group, {}).permit(:name, :description)
+      params.fetch(:group, {}).permit(:name, :description, :reported_at)
     end
   end
 end
