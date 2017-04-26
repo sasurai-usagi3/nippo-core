@@ -34,3 +34,13 @@ section
   .btn-group
     = link_to 'more', '#', class: 'btn btn-link'
     = link_to 'join more', groups_path, class: 'btn btn-link'
+section
+  h2
+    | Groups you request to join
+  ul.list-group
+    - @requesting_groups.each do |group|
+      li.list-group-item
+        = link_to group.name, group
+  .btn-group
+    = link_to 'more', '#', class: 'btn btn-link'
+    = link_to 'join more', groups_path, class: 'btn btn-link'

@@ -5,7 +5,6 @@ module NippoCore
     describe 'Association' do
       it { should have_many(:created_groups).class_name('NippoCore::Group').with_foreign_key('creator_id').dependent(:destroy) }
       it { should have_many(:reports).dependent(:destroy) }
-      it { should have_many(:groups).through(:group_member_relations) }
       it { should have_many(:group_member_relations).dependent(:destroy) }
     end
 
