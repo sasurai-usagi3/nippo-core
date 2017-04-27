@@ -6,6 +6,7 @@ module NippoCore
       it { should have_many(:created_groups).class_name('NippoCore::Group').with_foreign_key('creator_id').dependent(:destroy) }
       it { should have_many(:reports).dependent(:destroy) }
       it { should have_many(:group_member_relations).dependent(:destroy) }
+      it { should have_many(:comments).dependent(:destroy) }
     end
 
     describe 'Validation' do
